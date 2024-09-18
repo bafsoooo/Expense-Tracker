@@ -44,6 +44,14 @@ const argv = yargs
 
 const command = argv._[0];
 
-if (command === 'addexpns') { //addTodo
+if (command === 'addexpns') { //addExpense
+    if(argv.amount<0)
+        throw new Error('Amount cannot be negative');
 	expense.addExpense(argv.title, argv.amount);
 }
+if (command === 'deletexpns') { //deleteExpense 
+    expense.deleteExpense(argv.title);
+    console.log('Expense deleted');
+
+}
+

@@ -13,6 +13,17 @@ const addExpense = (title,amount) => {
     console.log('Expense added:', {id});
 };
 
+
+const deleteExpense = (title) => {
+    let expenses = fetchExpenses();
+    if (expenses.title ) {}
+    let filteredExpense = expenses.filter(
+        (expense) => expense.title !== title
+    );
+    saveExpenses(filteredExpense);
+    return expenses.length !== filteredExpense.length;
+};
+
 //Fetches all expenses from the file.
 const fetchExpenses = () => {
     try {
@@ -30,4 +41,4 @@ const saveExpenses = (expenses) => {
     fs.writeFileSync(expenseFilePath, dataJSON);
 }
 
-module.exports = { addExpense };
+module.exports = { addExpense , deleteExpense ,fetchExpenses, saveExpenses};
